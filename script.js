@@ -1388,6 +1388,30 @@ function initializeDataSourceCards() {
     });
 }
 
+// Pipeline Horizontal Scroll Enhancement
+function initializePipelineScroll() {
+    const container = document.getElementById('pipelineContainer');
+    const scrollHint = document.getElementById('scrollHint');
+    
+    if (container) {
+        // Hide scroll hint after user scrolls
+        container.addEventListener('scroll', () => {
+            if (scrollHint && container.scrollLeft > 50) {
+                scrollHint.style.opacity = '0';
+                scrollHint.style.transition = 'opacity 0.5s ease';
+            }
+        });
+        
+        // Enable smooth scrolling with mouse wheel
+        container.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+            }
+        });
+    }
+}
+
 // Initialize all Pipeline features
 function initializePipeline() {
     initializePipelineNavigation();
@@ -1395,6 +1419,7 @@ function initializePipeline() {
     initializePipelineStageInteractions();
     initializeAPITryButtons();
     initializeDataSourceCards();
+    initializePipelineScroll();
 }
 
 // Update DOMContentLoaded to include pipeline initialization

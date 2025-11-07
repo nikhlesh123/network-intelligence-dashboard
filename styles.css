@@ -3031,10 +3031,32 @@ body {
 
 /* Pipeline Stages Container */
 .pipeline-stages-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: flex;
     gap: 2rem;
     margin-bottom: 2rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 2rem;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar for Pipeline */
+.pipeline-stages-container::-webkit-scrollbar {
+    height: 12px;
+}
+
+.pipeline-stages-container::-webkit-scrollbar-track {
+    background: var(--neutral-gray-100);
+    border-radius: 6px;
+}
+
+.pipeline-stages-container::-webkit-scrollbar-thumb {
+    background: var(--primary-blue);
+    border-radius: 6px;
+}
+
+.pipeline-stages-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue-dark);
 }
 
 /* Individual Pipeline Stage */
@@ -3046,6 +3068,9 @@ body {
     transition: all 0.3s ease;
     position: relative;
     border: 2px solid transparent;
+    min-width: 420px;
+    max-width: 420px;
+    flex-shrink: 0;
 }
 
 .pipeline-stage:hover {
@@ -4049,7 +4074,13 @@ body {
 /* Responsive Design for Pipeline */
 @media (max-width: 1200px) {
     .pipeline-stages-container {
-        grid-template-columns: 1fr;
+        /* Keep horizontal scroll on all screen sizes */
+        display: flex;
+    }
+    
+    .pipeline-stage {
+        min-width: 380px;
+        max-width: 380px;
     }
     
     .dashboard-outputs {
@@ -4076,6 +4107,11 @@ body {
     
     .pipeline-subtitle {
         font-size: 0.95rem;
+    }
+    
+    .pipeline-stage {
+        min-width: 340px;
+        max-width: 340px;
     }
     
     .normalization-methods {
