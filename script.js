@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCollaboration();
     initializeIntegration();
     initializeHeatmap();
+    initializeUSHeatmap();
     initializeBulkActions();
     updateLastUpdateTime();
     startAutoRefresh();
@@ -232,6 +233,109 @@ function exportHeatmapData() {
     setTimeout(() => {
         showNotification('Heatmap data exported successfully', 'success');
     }, 1000);
+}
+
+// ========== US Heatmap Interactions ==========
+function initializeUSHeatmap() {
+    const stateRegions = document.querySelectorAll('.state-region');
+    const stateInfoPanel = document.getElementById('stateInfoPanel');
+    
+    // Sample state data
+    const stateData = {
+        'CA': { providers: 12500, members: 3250000, avgRate: '$285' },
+        'TX': { providers: 9800, members: 2450000, avgRate: '$268' },
+        'FL': { providers: 8900, members: 2120000, avgRate: '$292' },
+        'NY': { providers: 11200, members: 2850000, avgRate: '$305' },
+        'PA': { providers: 6500, members: 1580000, avgRate: '$276' },
+        'IL': { providers: 7200, members: 1720000, avgRate: '$281' },
+        'OH': { providers: 5800, members: 1420000, avgRate: '$264' },
+        'GA': { providers: 4900, members: 1180000, avgRate: '$278' },
+        'NC': { providers: 4200, members: 980000, avgRate: '$273' },
+        'MI': { providers: 4500, members: 1120000, avgRate: '$258' },
+        'MA': { providers: 3800, members: 950000, avgRate: '$288' },
+        'WA': { providers: 3200, members: 820000, avgRate: '$267' },
+        'AZ': { providers: 2900, members: 720000, avgRate: '$272' },
+        'NJ': { providers: 3600, members: 890000, avgRate: '$269' },
+        'VA': { providers: 3100, members: 780000, avgRate: '$265' }
+    };
+    
+    stateRegions.forEach(region => {
+        region.addEventListener('click', (e) => {
+            const state = region.getAttribute('data-state');
+            const variance = region.getAttribute('data-variance');
+            const data = stateData[state] || { providers: 'N/A', members: 'N/A', avgRate: 'N/A' };
+            
+            // Update info panel
+            document.getElementById('stateName').textContent = getStateName(state);
+            document.getElementById('stateVariance').textContent = variance;
+            document.getElementById('stateProviders').textContent = data.providers.toLocaleString();
+            document.getElementById('stateMembers').textContent = data.members.toLocaleString();
+            document.getElementById('stateRate').textContent = data.avgRate;
+            
+            // Show panel
+            stateInfoPanel.style.display = 'block';
+            
+            // Highlight selected state
+            stateRegions.forEach(r => r.style.strokeWidth = '2');
+            region.style.strokeWidth = '4';
+            region.style.stroke = '#1e40af';
+        });
+        
+        region.addEventListener('mouseenter', (e) => {
+            region.style.filter = 'brightness(1.2)';
+        });
+        
+        region.addEventListener('mouseleave', (e) => {
+            if (region.style.strokeWidth !== '4') {
+                region.style.filter = 'brightness(1)';
+            }
+        });
+    });
+}
+
+function getStateName(abbr) {
+    const states = {
+        'CA': 'California', 'TX': 'Texas', 'FL': 'Florida', 'NY': 'New York',
+        'PA': 'Pennsylvania', 'IL': 'Illinois', 'OH': 'Ohio', 'GA': 'Georgia',
+        'NC': 'North Carolina', 'MI': 'Michigan', 'MA': 'Massachusetts',
+        'WA': 'Washington', 'AZ': 'Arizona', 'NJ': 'New Jersey', 'VA': 'Virginia',
+        'TN': 'Tennessee', 'IN': 'Indiana', 'MO': 'Missouri', 'MD': 'Maryland',
+        'WI': 'Wisconsin', 'CO': 'Colorado', 'MN': 'Minnesota', 'SC': 'South Carolina',
+        'AL': 'Alabama', 'LA': 'Louisiana', 'KY': 'Kentucky', 'OR': 'Oregon',
+        'OK': 'Oklahoma', 'CT': 'Connecticut', 'IA': 'Iowa', 'MS': 'Mississippi',
+        'AR': 'Arkansas', 'KS': 'Kansas', 'UT': 'Utah', 'NV': 'Nevada',
+        'NM': 'New Mexico', 'WV': 'West Virginia', 'NE': 'Nebraska', 'ID': 'Idaho',
+        'HI': 'Hawaii', 'NH': 'New Hampshire', 'ME': 'Maine', 'RI': 'Rhode Island',
+        'MT': 'Montana', 'DE': 'Delaware', 'SD': 'South Dakota', 'ND': 'North Dakota',
+        'AK': 'Alaska', 'DC': 'District of Columbia', 'VT': 'Vermont', 'WY': 'Wyoming'
+    };
+    return states[abbr] || abbr;
+}
+
+function drillDownToState() {
+    const stateName = document.getElementById('stateName').textContent;
+    showNotification(`Opening detailed view for ${stateName}...`, 'info');
+    
+    // Switch to Manager tab for regional drill-down
+    setTimeout(() => {
+        const managerTab = document.querySelector('[data-tab="manager"]');
+        if (managerTab) {
+            managerTab.click();
+        }
+        showNotification(`Viewing ${stateName} regional details`, 'success');
+    }, 500);
+}
+
+function expandUSMap() {
+    const mapWrapper = document.querySelector('.us-map-wrapper');
+    if (mapWrapper.requestFullscreen) {
+        mapWrapper.requestFullscreen();
+    } else if (mapWrapper.webkitRequestFullscreen) {
+        mapWrapper.webkitRequestFullscreen();
+    } else if (mapWrapper.msRequestFullscreen) {
+        mapWrapper.msRequestFullscreen();
+    }
+    showNotification('Map expanded to fullscreen', 'info');
 }
 
 function refreshMapData() {
@@ -1388,30 +1492,6 @@ function initializeDataSourceCards() {
     });
 }
 
-// Pipeline Horizontal Scroll Enhancement
-function initializePipelineScroll() {
-    const container = document.getElementById('pipelineContainer');
-    const scrollHint = document.getElementById('scrollHint');
-    
-    if (container) {
-        // Hide scroll hint after user scrolls
-        container.addEventListener('scroll', () => {
-            if (scrollHint && container.scrollLeft > 50) {
-                scrollHint.style.opacity = '0';
-                scrollHint.style.transition = 'opacity 0.5s ease';
-            }
-        });
-        
-        // Enable smooth scrolling with mouse wheel
-        container.addEventListener('wheel', (e) => {
-            if (e.deltaY !== 0) {
-                e.preventDefault();
-                container.scrollLeft += e.deltaY;
-            }
-        });
-    }
-}
-
 // Initialize all Pipeline features
 function initializePipeline() {
     initializePipelineNavigation();
@@ -1419,7 +1499,6 @@ function initializePipeline() {
     initializePipelineStageInteractions();
     initializeAPITryButtons();
     initializeDataSourceCards();
-    initializePipelineScroll();
 }
 
 // Update DOMContentLoaded to include pipeline initialization

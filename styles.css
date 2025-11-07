@@ -699,10 +699,125 @@ body {
     background: var(--neutral-gray-50);
     border-radius: var(--radius-md);
     min-height: 500px;
+    position: relative;
+}
+
+/* US Heatmap Styles */
+.us-map-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.us-heatmap-svg {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+}
+
+.state-region {
+    stroke: #fff;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.state-region:hover {
+    opacity: 1;
+    stroke-width: 3;
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.state-region.critical {
+    fill: #ef4444;
+}
+
+.state-region.high {
+    fill: #f59e0b;
+}
+
+.state-region.moderate {
+    fill: #fbbf24;
+}
+
+.state-region.low {
+    fill: #86efac;
+}
+
+.state-region.good {
+    fill: #22c55e;
+}
+
+.heatmap-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.legend-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--neutral-gray-400);
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--neutral-gray-700);
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.state-info-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: 2px solid var(--primary-blue);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    min-width: 250px;
+    z-index: 100;
+}
+
+.state-info-panel h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-blue);
+    border-bottom: 2px solid var(--primary-blue);
+    padding-bottom: 0.5rem;
+}
+
+.state-metrics {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.state-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: var(--neutral-gray-600);
+}
+
+.metric-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--neutral-gray-800);
 }
 
 /* ============= Data Tables ============= */
@@ -3031,32 +3146,10 @@ body {
 
 /* Pipeline Stages Container */
 .pipeline-stages-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
-    overflow-x: auto;
-    overflow-y: visible;
-    padding-bottom: 2rem;
-    scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar for Pipeline */
-.pipeline-stages-container::-webkit-scrollbar {
-    height: 12px;
-}
-
-.pipeline-stages-container::-webkit-scrollbar-track {
-    background: var(--neutral-gray-100);
-    border-radius: 6px;
-}
-
-.pipeline-stages-container::-webkit-scrollbar-thumb {
-    background: var(--primary-blue);
-    border-radius: 6px;
-}
-
-.pipeline-stages-container::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-blue-dark);
 }
 
 /* Individual Pipeline Stage */
@@ -3068,9 +3161,6 @@ body {
     transition: all 0.3s ease;
     position: relative;
     border: 2px solid transparent;
-    min-width: 420px;
-    max-width: 420px;
-    flex-shrink: 0;
 }
 
 .pipeline-stage:hover {
@@ -4074,13 +4164,7 @@ body {
 /* Responsive Design for Pipeline */
 @media (max-width: 1200px) {
     .pipeline-stages-container {
-        /* Keep horizontal scroll on all screen sizes */
-        display: flex;
-    }
-    
-    .pipeline-stage {
-        min-width: 380px;
-        max-width: 380px;
+        grid-template-columns: 1fr;
     }
     
     .dashboard-outputs {
@@ -4107,11 +4191,6 @@ body {
     
     .pipeline-subtitle {
         font-size: 0.95rem;
-    }
-    
-    .pipeline-stage {
-        min-width: 340px;
-        max-width: 340px;
     }
     
     .normalization-methods {
