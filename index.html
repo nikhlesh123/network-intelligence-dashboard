@@ -68,6 +68,10 @@
                 <i class="fas fa-project-diagram"></i>
                 Data Pipeline
             </button>
+            <button class="tab-btn" data-tab="metrics">
+                <i class="fas fa-trophy"></i>
+                Success Metrics
+            </button>
         </div>
     </nav>
 
@@ -2758,6 +2762,625 @@
                             <span>Automated Processing</span>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Success Metrics & Business Value Tab -->
+            <div class="tab-content" id="metrics-tab">
+                <div class="metrics-header">
+                    <div class="metrics-title-section">
+                        <h2><i class="fas fa-trophy"></i> Success Metrics & Business Value</h2>
+                        <p class="metrics-subtitle">Measurable outcomes achieved through data-driven network intelligence</p>
+                    </div>
+                    <div class="metrics-controls">
+                        <select class="filter-select" id="metricsTimeframe">
+                            <option value="ytd">Year to Date 2025</option>
+                            <option value="q4">Q4 2025</option>
+                            <option value="q3">Q3 2025</option>
+                            <option value="q2">Q2 2025</option>
+                            <option value="q1">Q1 2025</option>
+                        </select>
+                        <select class="filter-select" id="metricsRegion">
+                            <option value="all">All Regions</option>
+                            <option value="northeast">Northeast</option>
+                            <option value="southeast">Southeast</option>
+                            <option value="midwest">Midwest</option>
+                            <option value="southwest">Southwest</option>
+                            <option value="west">West</option>
+                        </select>
+                        <select class="filter-select" id="metricsSpecialty">
+                            <option value="all">All Specialties</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="imaging">Imaging</option>
+                            <option value="primary">Primary Care</option>
+                        </select>
+                        <button class="btn-metrics-export">
+                            <i class="fas fa-download"></i> Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real-Time KPI Dashboard -->
+                <div class="kpi-dashboard">
+                    <div class="kpi-card primary">
+                        <div class="kpi-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Total Cost Savings</div>
+                            <div class="kpi-value" data-countup="42500000">$42.5M</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-up"></i> +$8.2M vs Q3
+                            </div>
+                            <div class="kpi-sparkline" id="savingsSparkline"></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card success">
+                        <div class="kpi-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Negotiation Impact</div>
+                            <div class="kpi-value" data-countup="28300000">$28.3M</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-up"></i> 156 contracts renegotiated
+                            </div>
+                            <div class="kpi-detail">Avg rate reduction: 9.4%</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card warning">
+                        <div class="kpi-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Risk Concentration (HHI)</div>
+                            <div class="kpi-value" data-countup="1850">1,850</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-down"></i> -420 points (18% reduction)
+                            </div>
+                            <div class="kpi-detail">From 2,270 to 1,850</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card info">
+                        <div class="kpi-icon">
+                            <i class="fas fa-map-marked"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Network Adequacy Score</div>
+                            <div class="kpi-value">94.2%</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-up"></i> +6.8% vs baseline
+                            </div>
+                            <div class="kpi-detail">287 of 305 counties adequate</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card accent">
+                        <div class="kpi-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Operational Efficiency</div>
+                            <div class="kpi-value">72%</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-up"></i> Time saved
+                            </div>
+                            <div class="kpi-detail">From 5 days to 1.4 days avg</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-card secondary">
+                        <div class="kpi-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-label">Compliance Score</div>
+                            <div class="kpi-value">98.5%</div>
+                            <div class="kpi-change positive">
+                                <i class="fas fa-arrow-up"></i> +4.2% improvement
+                            </div>
+                            <div class="kpi-detail">CMS adequacy standards met</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Metrics Sections -->
+                <div class="metrics-grid">
+                    <!-- Negotiation Impact Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-chart-line"></i> Negotiation Impact Analysis</h3>
+                            <span class="live-badge">LIVE</span>
+                        </div>
+                        <div class="metric-content">
+                            <div class="impact-summary">
+                                <div class="impact-stat">
+                                    <span class="stat-number">$28.3M</span>
+                                    <span class="stat-label">Total Savings from Rate Negotiations</span>
+                                </div>
+                                <div class="impact-stat">
+                                    <span class="stat-number">156</span>
+                                    <span class="stat-label">Contracts Successfully Renegotiated</span>
+                                </div>
+                                <div class="impact-stat">
+                                    <span class="stat-number">9.4%</span>
+                                    <span class="stat-label">Average Rate Reduction Achieved</span>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="negotiationTrendChart"></canvas>
+                            </div>
+                            <div class="specialty-breakdown">
+                                <h4>Savings by Specialty</h4>
+                                <div class="breakdown-list">
+                                    <div class="breakdown-item">
+                                        <span class="specialty-name">Cardiology</span>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" style="width: 85%"></div>
+                                        </div>
+                                        <span class="specialty-value">$9.8M</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="specialty-name">Orthopedics</span>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" style="width: 68%"></div>
+                                        </div>
+                                        <span class="specialty-value">$7.2M</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="specialty-name">Imaging</span>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" style="width: 52%"></div>
+                                        </div>
+                                        <span class="specialty-value">$5.5M</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="specialty-name">Surgery</span>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" style="width: 38%"></div>
+                                        </div>
+                                        <span class="specialty-value">$4.1M</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span class="specialty-name">Other</span>
+                                        <div class="progress-bar-container">
+                                            <div class="progress-bar" style="width: 22%"></div>
+                                        </div>
+                                        <span class="specialty-value">$1.7M</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost Savings Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-piggy-bank"></i> Cost Savings Performance</h3>
+                            <button class="btn-small" onclick="refreshMetrics()">
+                                <i class="fas fa-sync"></i> Refresh
+                            </button>
+                        </div>
+                        <div class="metric-content">
+                            <div class="savings-gauge-container">
+                                <div class="gauge-wrapper">
+                                    <canvas id="savingsGauge"></canvas>
+                                    <div class="gauge-label">
+                                        <div class="gauge-value">$42.5M</div>
+                                        <div class="gauge-target">Target: $35M</div>
+                                        <div class="gauge-achievement">121% of Goal</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quarterly-trends">
+                                <h4>Quarterly Trend</h4>
+                                <canvas id="quarterlySavingsChart"></canvas>
+                            </div>
+                            <div class="regional-performance">
+                                <h4>Regional Performance</h4>
+                                <div class="region-cards">
+                                    <div class="region-card">
+                                        <div class="region-name">Northeast</div>
+                                        <div class="region-savings">$12.8M</div>
+                                        <div class="region-change positive">+18%</div>
+                                    </div>
+                                    <div class="region-card">
+                                        <div class="region-name">Southeast</div>
+                                        <div class="region-savings">$10.2M</div>
+                                        <div class="region-change positive">+22%</div>
+                                    </div>
+                                    <div class="region-card">
+                                        <div class="region-name">Midwest</div>
+                                        <div class="region-savings">$8.5M</div>
+                                        <div class="region-change positive">+15%</div>
+                                    </div>
+                                    <div class="region-card">
+                                        <div class="region-name">Southwest</div>
+                                        <div class="region-savings">$6.9M</div>
+                                        <div class="region-change positive">+12%</div>
+                                    </div>
+                                    <div class="region-card">
+                                        <div class="region-name">West</div>
+                                        <div class="region-savings">$4.1M</div>
+                                        <div class="region-change positive">+8%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk Concentration Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-shield-alt"></i> Risk Concentration Reduction</h3>
+                            <span class="info-badge">Herfindahl-Hirschman Index</span>
+                        </div>
+                        <div class="metric-content">
+                            <div class="hhi-visualization">
+                                <div class="hhi-comparison">
+                                    <div class="hhi-period">
+                                        <div class="period-label">Baseline (Q1 2025)</div>
+                                        <div class="hhi-bar danger" style="width: 100%">
+                                            <span class="hhi-value">2,270</span>
+                                        </div>
+                                        <div class="hhi-status danger">High Concentration</div>
+                                    </div>
+                                    <div class="hhi-arrow">
+                                        <i class="fas fa-arrow-down"></i>
+                                        <span>-18%</span>
+                                    </div>
+                                    <div class="hhi-period">
+                                        <div class="period-label">Current (Q4 2025)</div>
+                                        <div class="hhi-bar success" style="width: 81.5%">
+                                            <span class="hhi-value">1,850</span>
+                                        </div>
+                                        <div class="hhi-status success">Moderate Concentration</div>
+                                    </div>
+                                </div>
+                                <canvas id="hhiTrendChart"></canvas>
+                            </div>
+                            <div class="concentration-details">
+                                <h4>Provider Diversification Progress</h4>
+                                <div class="diversification-metrics">
+                                    <div class="div-metric">
+                                        <i class="fas fa-users"></i>
+                                        <div>
+                                            <strong>+42</strong>
+                                            <span>New Provider Contracts</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-metric">
+                                        <i class="fas fa-chart-pie"></i>
+                                        <div>
+                                            <strong>-8%</strong>
+                                            <span>Top 5 Provider Share</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-metric">
+                                        <i class="fas fa-expand-arrows-alt"></i>
+                                        <div>
+                                            <strong>+15</strong>
+                                            <span>Geographic Markets</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Network Adequacy Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-check-circle"></i> Network Adequacy Improvement</h3>
+                            <span class="compliance-badge">CMS Compliant</span>
+                        </div>
+                        <div class="metric-content">
+                            <div class="adequacy-score-container">
+                                <div class="score-circle" data-score="94.2">
+                                    <svg viewBox="0 0 200 200">
+                                        <circle cx="100" cy="100" r="90" fill="none" stroke="#e2e8f0" stroke-width="15"/>
+                                        <circle cx="100" cy="100" r="90" fill="none" stroke="#22c55e" stroke-width="15" 
+                                                stroke-dasharray="565.48" stroke-dashoffset="32.8" 
+                                                transform="rotate(-90 100 100)"/>
+                                    </svg>
+                                    <div class="score-text">
+                                        <div class="score-value">94.2%</div>
+                                        <div class="score-label">Adequacy Score</div>
+                                    </div>
+                                </div>
+                                <div class="adequacy-details">
+                                    <div class="adequacy-stat">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        <div>
+                                            <strong>287 / 305</strong>
+                                            <span>Counties Meeting Standards</span>
+                                        </div>
+                                    </div>
+                                    <div class="adequacy-stat">
+                                        <i class="fas fa-hospital"></i>
+                                        <div>
+                                            <strong>42 / 45</strong>
+                                            <span>Specialties Adequate</span>
+                                        </div>
+                                    </div>
+                                    <div class="adequacy-stat">
+                                        <i class="fas fa-clock"></i>
+                                        <div>
+                                            <strong>12 min</strong>
+                                            <span>Avg Time to Provider</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="adequacy-improvements">
+                                <h4>Key Improvements Since Q1</h4>
+                                <div class="improvement-list">
+                                    <div class="improvement-item success">
+                                        <i class="fas fa-check"></i>
+                                        <span>Added 18 counties to adequate status</span>
+                                        <strong>+6.8%</strong>
+                                    </div>
+                                    <div class="improvement-item success">
+                                        <i class="fas fa-check"></i>
+                                        <span>Expanded cardiology coverage in SW region</span>
+                                        <strong>+24 providers</strong>
+                                    </div>
+                                    <div class="improvement-item success">
+                                        <i class="fas fa-check"></i>
+                                        <span>Reduced average member travel time</span>
+                                        <strong>-3.2 minutes</strong>
+                                    </div>
+                                    <div class="improvement-item warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>3 specialties still below standard (Endocrinology, Neurology, Dermatology)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Operational Efficiency Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-tachometer-alt"></i> Operational Efficiency Gains</h3>
+                            <button class="btn-small">View Workflow</button>
+                        </div>
+                        <div class="metric-content">
+                            <div class="efficiency-comparison">
+                                <div class="efficiency-card before">
+                                    <div class="card-label">Before Platform</div>
+                                    <div class="efficiency-metrics">
+                                        <div class="eff-metric">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <div>
+                                                <strong>5.0 days</strong>
+                                                <span>Negotiation Prep Time</span>
+                                            </div>
+                                        </div>
+                                        <div class="eff-metric">
+                                            <i class="fas fa-user"></i>
+                                            <div>
+                                                <strong>4 FTEs</strong>
+                                                <span>Required Resources</span>
+                                            </div>
+                                        </div>
+                                        <div class="eff-metric">
+                                            <i class="fas fa-file-alt"></i>
+                                            <div>
+                                                <strong>Manual</strong>
+                                                <span>Data Collection</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="efficiency-arrow">
+                                    <i class="fas fa-arrow-right"></i>
+                                    <span>72% Faster</span>
+                                </div>
+                                <div class="efficiency-card after">
+                                    <div class="card-label">With Platform</div>
+                                    <div class="efficiency-metrics">
+                                        <div class="eff-metric">
+                                            <i class="fas fa-calendar-check"></i>
+                                            <div>
+                                                <strong>1.4 days</strong>
+                                                <span>Negotiation Prep Time</span>
+                                            </div>
+                                        </div>
+                                        <div class="eff-metric">
+                                            <i class="fas fa-user-check"></i>
+                                            <div>
+                                                <strong>1.5 FTEs</strong>
+                                                <span>Required Resources</span>
+                                            </div>
+                                        </div>
+                                        <div class="eff-metric">
+                                            <i class="fas fa-robot"></i>
+                                            <div>
+                                                <strong>Automated</strong>
+                                                <span>Data Collection</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-savings-chart">
+                                <h4>Time Savings by Task</h4>
+                                <canvas id="timeSavingsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Compliance & Quality Section -->
+                    <div class="metric-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-certificate"></i> Compliance & Quality Metrics</h3>
+                            <span class="badge badge-green">Excellent</span>
+                        </div>
+                        <div class="metric-content">
+                            <div class="compliance-grid">
+                                <div class="compliance-card">
+                                    <div class="compliance-icon">
+                                        <i class="fas fa-check-double"></i>
+                                    </div>
+                                    <div class="compliance-score">98.5%</div>
+                                    <div class="compliance-label">Overall Compliance</div>
+                                    <div class="compliance-change">+4.2% vs Q1</div>
+                                </div>
+                                <div class="compliance-card">
+                                    <div class="compliance-icon">
+                                        <i class="fas fa-file-contract"></i>
+                                    </div>
+                                    <div class="compliance-score">100%</div>
+                                    <div class="compliance-label">Contract Documentation</div>
+                                    <div class="compliance-change">Fully Compliant</div>
+                                </div>
+                                <div class="compliance-card">
+                                    <div class="compliance-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <div class="compliance-score">99.2%</div>
+                                    <div class="compliance-label">Data Quality Score</div>
+                                    <div class="compliance-change">+2.8% improvement</div>
+                                </div>
+                                <div class="compliance-card">
+                                    <div class="compliance-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="compliance-score">100%</div>
+                                    <div class="compliance-label">Audit Trail Coverage</div>
+                                    <div class="compliance-change">Complete</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Value Summary -->
+                <div class="business-value-summary">
+                    <div class="summary-header">
+                        <h2><i class="fas fa-chart-bar"></i> Executive Business Value Summary</h2>
+                        <div class="summary-period">Year to Date 2025</div>
+                    </div>
+                    <div class="summary-content">
+                        <div class="value-highlights">
+                            <div class="highlight-card primary">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <div class="highlight-label">Cumulative Financial Impact</div>
+                                    <div class="highlight-value">$42.5M</div>
+                                    <div class="highlight-breakdown">
+                                        <span>Negotiation Savings: $28.3M</span>
+                                        <span>Avoided Over-Market Payments: $14.2M</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="highlight-card success">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <div class="highlight-label">Return on Investment (ROI)</div>
+                                    <div class="highlight-value">850%</div>
+                                    <div class="highlight-breakdown">
+                                        <span>Platform Cost: $5M annually</span>
+                                        <span>Total Value Generated: $42.5M</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="highlight-card info">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <div class="highlight-label">PMPM Reduction</div>
+                                    <div class="highlight-value">$38.64</div>
+                                    <div class="highlight-breakdown">
+                                        <span>From $485.20 to $446.56</span>
+                                        <span>8.0% total reduction</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="highlight-card accent">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <div class="highlight-label">Strategic Achievements</div>
+                                    <div class="highlight-value">5/5</div>
+                                    <div class="highlight-breakdown">
+                                        <span>All annual goals exceeded</span>
+                                        <span>Q4 targets on track</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="roi-visualization">
+                            <h3>ROI & Value Creation Timeline</h3>
+                            <canvas id="roiTimelineChart"></canvas>
+                        </div>
+
+                        <div class="executive-insights">
+                            <h3>Key Executive Insights</h3>
+                            <div class="insights-grid">
+                                <div class="insight-card">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <h4>Platform Adoption</h4>
+                                    <p>100% of network contracts now managed through platform, enabling real-time benchmarking and rapid response to market changes.</p>
+                                </div>
+                                <div class="insight-card">
+                                    <i class="fas fa-chart-area"></i>
+                                    <h4>Market Position</h4>
+                                    <p>Rates now 3.5% below regional market average, down from 8.5% above market at program inception.</p>
+                                </div>
+                                <div class="insight-card">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Member Impact</h4>
+                                    <p>Improved network adequacy resulted in 94.2% member satisfaction score, +6.8% improvement year-over-year.</p>
+                                </div>
+                                <div class="insight-card">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>Speed to Value</h4>
+                                    <p>Average contract negotiation cycle reduced from 45 days to 12 days, enabling faster implementation of savings.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="export-options">
+                            <button class="btn-export-large pdf" onclick="exportQuarterlyReport('pdf')">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Export as PDF</span>
+                            </button>
+                            <button class="btn-export-large excel" onclick="exportQuarterlyReport('excel')">
+                                <i class="fas fa-file-excel"></i>
+                                <span>Export as Excel</span>
+                            </button>
+                            <button class="btn-export-large ppt" onclick="exportQuarterlyReport('ppt')">
+                                <i class="fas fa-file-powerpoint"></i>
+                                <span>Export as PowerPoint</span>
+                            </button>
+                            <button class="btn-export-large csv" onclick="exportQuarterlyReport('csv')">
+                                <i class="fas fa-file-csv"></i>
+                                <span>Export Raw Data (CSV)</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-Time Data Feed Indicator -->
+                <div class="data-feed-indicator">
+                    <div class="feed-status">
+                        <div class="pulse-dot"></div>
+                        <span>Live data from TiC, MRF, Claims & Provider directories</span>
+                    </div>
+                    <div class="last-update">Last updated: <span id="metricsLastUpdate">Nov 7, 2025 10:45 AM</span></div>
                 </div>
             </div>
         </main>

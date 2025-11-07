@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeIntegration();
     initializeHeatmap();
     initializeUSHeatmap();
+    initializeSuccessMetrics();
     initializeBulkActions();
     updateLastUpdateTime();
     startAutoRefresh();
@@ -1510,4 +1511,370 @@ document.addEventListener('DOMContentLoaded', function() {
 // Log initialization
 console.log('Network Intelligence Dashboard initialized successfully');
 console.log('Data Intelligence Pipeline features loaded');
+
+// ========== SUCCESS METRICS & BUSINESS VALUE ==========
+
+function initializeSuccessMetrics() {
+    initializeMetricsCharts();
+    initializeMetricsFilters();
+    initializeCountUpAnimations();
+    updateMetricsTimestamp();
+}
+
+// Initialize all charts for Success Metrics
+function initializeMetricsCharts() {
+    // Negotiation Trend Chart
+    const negotiationTrendCtx = document.getElementById('negotiationTrendChart');
+    if (negotiationTrendCtx) {
+        new Chart(negotiationTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025 (YTD)'],
+                datasets: [{
+                    label: 'Savings from Negotiations ($M)',
+                    data: [4.2, 8.5, 13.1, 28.3],
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y.toFixed(1) + 'M';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Quarterly Savings Chart
+    const quarterlySavingsCtx = document.getElementById('quarterlySavingsChart');
+    if (quarterlySavingsCtx) {
+        new Chart(quarterlySavingsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025 (YTD)'],
+                datasets: [{
+                    label: 'Cost Savings',
+                    data: [8.5, 11.2, 14.6, 18.2],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(139, 92, 246, 0.8)'
+                    ],
+                    borderColor: [
+                        '#3b82f6',
+                        '#22c55e',
+                        '#f59e0b',
+                        '#8b5cf6'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '$' + context.parsed.y.toFixed(1) + 'M';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // HHI Trend Chart
+    const hhiTrendCtx = document.getElementById('hhiTrendChart');
+    if (hhiTrendCtx) {
+        new Chart(hhiTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'HHI Score',
+                    data: [2270, 2245, 2210, 2180, 2150, 2120, 2080, 2020, 1960, 1910, 1850],
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3
+                }, {
+                    label: 'Target',
+                    data: [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000],
+                    borderColor: '#f59e0b',
+                    borderDash: [5, 5],
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 1500,
+                        max: 2500
+                    }
+                }
+            }
+        });
+    }
+
+    // Time Savings Chart
+    const timeSavingsCtx = document.getElementById('timeSavingsChart');
+    if (timeSavingsCtx) {
+        new Chart(timeSavingsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Data Collection', 'Rate Analysis', 'Benchmarking', 'Report Generation', 'Negotiation Prep'],
+                datasets: [{
+                    label: 'Before (hours)',
+                    data: [24, 16, 20, 12, 18],
+                    backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                    borderColor: '#ef4444',
+                    borderWidth: 2
+                }, {
+                    label: 'After (hours)',
+                    data: [2, 3, 4, 1, 5],
+                    backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                    borderColor: '#22c55e',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.x + ' hours';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'h';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ROI Timeline Chart
+    const roiTimelineCtx = document.getElementById('roiTimelineChart');
+    if (roiTimelineCtx) {
+        new Chart(roiTimelineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'Cumulative Value ($M)',
+                    data: [3.2, 6.8, 11.5, 15.2, 20.1, 24.5, 29.2, 33.8, 38.1, 40.5, 42.5],
+                    borderColor: '#1e40af',
+                    backgroundColor: 'rgba(30, 64, 175, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    yAxisID: 'y'
+                }, {
+                    label: 'ROI %',
+                    data: [64, 136, 230, 304, 402, 490, 584, 676, 762, 810, 850],
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'M';
+                            }
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+// Initialize Metrics Filters
+function initializeMetricsFilters() {
+    const timeframeFilter = document.getElementById('metricsTimeframe');
+    const regionFilter = document.getElementById('metricsRegion');
+    const specialtyFilter = document.getElementById('metricsSpecialty');
+
+    [timeframeFilter, regionFilter, specialtyFilter].forEach(filter => {
+        if (filter) {
+            filter.addEventListener('change', () => {
+                showNotification('Updating metrics...', 'info');
+                setTimeout(() => {
+                    refreshMetrics();
+                    showNotification('Metrics updated successfully', 'success');
+                }, 1000);
+            });
+        }
+    });
+}
+
+// Count-up animations for KPI values
+function initializeCountUpAnimations() {
+    const kpiValues = document.querySelectorAll('[data-countup]');
+    
+    kpiValues.forEach(element => {
+        const target = parseInt(element.getAttribute('data-countup'));
+        animateValue(element, 0, target, 2000);
+    });
+}
+
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        
+        // Format based on size
+        if (end >= 1000000) {
+            element.textContent = '$' + (value / 1000000).toFixed(1) + 'M';
+        } else if (end >= 1000) {
+            element.textContent = (value / 1000).toFixed(1) + 'K';
+        } else {
+            element.textContent = value;
+        }
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Refresh Metrics
+function refreshMetrics() {
+    showNotification('Refreshing all metrics from live data sources...', 'info');
+    
+    // Simulate data refresh
+    setTimeout(() => {
+        updateMetricsTimestamp();
+        showNotification('All metrics refreshed successfully', 'success');
+    }, 1500);
+}
+
+// Update Metrics Timestamp
+function updateMetricsTimestamp() {
+    const timestampElement = document.getElementById('metricsLastUpdate');
+    if (timestampElement) {
+        const now = new Date();
+        const formatted = now.toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        });
+        timestampElement.textContent = formatted;
+    }
+}
+
+// Export Quarterly Report
+function exportQuarterlyReport(format) {
+    const formatNames = {
+        'pdf': 'PDF',
+        'excel': 'Excel',
+        'ppt': 'PowerPoint',
+        'csv': 'CSV'
+    };
+    
+    showNotification(`Preparing ${formatNames[format]} export...`, 'info');
+    
+    setTimeout(() => {
+        showNotification(`Success Metrics Report exported as ${formatNames[format]}`, 'success');
+    }, 2000);
+}
 
