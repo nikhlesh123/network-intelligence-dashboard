@@ -1198,6 +1198,7 @@ document.querySelectorAll('.tooltip-icon').forEach(icon => {
     });
 });
 
+
 // ========== Refresh Data Functionality ==========
 document.querySelector('.refresh-status')?.addEventListener('click', function() {
     const icon = this.querySelector('i');
@@ -1212,5 +1213,197 @@ document.querySelector('.refresh-status')?.addEventListener('click', function() 
     }, 2000);
 });
 
+// ========== DATA PIPELINE FUNCTIONALITY ==========
+
+// Initialize Pipeline Sub-Navigation
+function initializePipelineNavigation() {
+    const pipelineSubnavBtns = document.querySelectorAll('.pipeline-subnav-btn');
+    const pipelineViews = document.querySelectorAll('.pipeline-view');
+    
+    pipelineSubnavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const viewId = btn.getAttribute('data-pipeline-view');
+            
+            // Update active button
+            pipelineSubnavBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update active view
+            pipelineViews.forEach(view => {
+                view.classList.remove('active');
+                if (view.id === `${viewId}-view`) {
+                    view.classList.add('active');
+                }
+            });
+        });
+    });
+}
+
+// Start Flow Animation
+function startDataFlowAnimation() {
+    const startBtn = document.getElementById('startFlowBtn');
+    const resetBtn = document.getElementById('resetFlowBtn');
+    const pipelineStages = document.querySelectorAll('.pipeline-stage');
+    const journeyViz = document.getElementById('dataJourneyViz');
+    
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            // Activate journey visualization
+            journeyViz.classList.add('active');
+            
+            // Animate stages sequentially
+            pipelineStages.forEach((stage, index) => {
+                setTimeout(() => {
+                    stage.classList.add('active');
+                    
+                    // Add glow effect
+                    stage.style.boxShadow = '0 0 30px rgba(34, 197, 94, 0.5)';
+                    
+                    setTimeout(() => {
+                        stage.style.boxShadow = '';
+                    }, 800);
+                }, index * 700);
+            });
+            
+            // Show notification
+            showNotification('Data flow animation started', 'success');
+            
+            // Deactivate visualization after animation
+            setTimeout(() => {
+                journeyViz.classList.remove('active');
+                showNotification('Data successfully processed through all stages!', 'success');
+            }, pipelineStages.length * 700 + 2000);
+        });
+    }
+    
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            pipelineStages.forEach(stage => {
+                stage.classList.remove('active');
+            });
+            journeyViz.classList.remove('active');
+            showNotification('Pipeline reset', 'info');
+        });
+    }
+}
+
+// Pipeline Stage Hover Effects
+function initializePipelineStageInteractions() {
+    const stages = document.querySelectorAll('.pipeline-stage');
+    
+    stages.forEach(stage => {
+        stage.addEventListener('mouseenter', () => {
+            const stageType = stage.getAttribute('data-stage');
+            showStageTooltip(stage, stageType);
+        });
+        
+        stage.addEventListener('mouseleave', () => {
+            hideStageTooltip();
+        });
+    });
+}
+
+// Show Stage Tooltip with Details
+function showStageTooltip(stage, stageType) {
+    const tooltips = {
+        'sources': 'Raw data from TiC, MRF, claims, and provider directories',
+        'ingestion': 'Automated data extraction using Kafka streams and batch processes',
+        'parsing': 'Schema validation and format standardization across all sources',
+        'cleaning': 'Deduplication, outlier detection, and data quality enhancement',
+        'identity': 'Entity resolution to link providers across different data sources',
+        'normalization': 'Risk adjustment and geographic indexing for fair benchmarking',
+        'integration': 'Cross-source joins to create unified analytical datasets',
+        'modeling': 'Statistical analysis, ML models, and business intelligence',
+        'curated': 'Production-ready datasets optimized for query performance',
+        'api': 'RESTful APIs providing secure access to curated insights',
+        'dashboards': 'Role-based dashboards for executives, managers, and contracting teams'
+    };
+    
+    const tooltip = tooltips[stageType];
+    if (tooltip) {
+        // You can implement a custom tooltip display here
+        stage.setAttribute('title', tooltip);
+    }
+}
+
+function hideStageTooltip() {
+    // Hide custom tooltip if implemented
+}
+
+// Switch to Dashboard Tab from Pipeline
+function switchToTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+        if (tab.getAttribute('data-tab') === tabName) {
+            tab.click();
+        }
+    });
+    
+    showNotification(`Switched to ${tabName.charAt(0).toUpperCase() + tabName.slice(1)} Dashboard`, 'success');
+}
+
+// Export Pipeline as Infographic
+function exportPipelineInfographic() {
+    showNotification('Preparing pipeline infographic for download...', 'info');
+    
+    setTimeout(() => {
+        showNotification('Pipeline infographic exported as PNG', 'success');
+    }, 1500);
+}
+
+// API Try It Functionality
+function initializeAPITryButtons() {
+    const tryButtons = document.querySelectorAll('.btn-try-api');
+    
+    tryButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const endpointItem = e.target.closest('.api-endpoint-item');
+            const endpoint = endpointItem.querySelector('code').textContent;
+            
+            showNotification(`Opening API playground for ${endpoint}`, 'info');
+            
+            // Simulate API call
+            setTimeout(() => {
+                showNotification('API response: 200 OK', 'success');
+            }, 1000);
+        });
+    });
+}
+
+// Data Source Card Interactions
+function initializeDataSourceCards() {
+    const sourceCards = document.querySelectorAll('.data-source-card');
+    
+    sourceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const sourceName = card.querySelector('h4').textContent;
+            showNotification(`Viewing details for ${sourceName}`, 'info');
+            
+            // Highlight the card
+            sourceCards.forEach(c => c.style.border = '2px solid transparent');
+            card.style.border = '2px solid var(--primary-blue)';
+        });
+    });
+}
+
+// Initialize all Pipeline features
+function initializePipeline() {
+    initializePipelineNavigation();
+    startDataFlowAnimation();
+    initializePipelineStageInteractions();
+    initializeAPITryButtons();
+    initializeDataSourceCards();
+}
+
+// Update DOMContentLoaded to include pipeline initialization
+const originalDOMContentLoaded = document.querySelector('script');
+document.addEventListener('DOMContentLoaded', function() {
+    initializePipeline();
+});
+
 // Log initialization
 console.log('Network Intelligence Dashboard initialized successfully');
+console.log('Data Intelligence Pipeline features loaded');
+

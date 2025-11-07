@@ -64,6 +64,10 @@
                 <i class="fas fa-handshake"></i>
                 Contracting Team
             </button>
+            <button class="tab-btn" data-tab="pipeline">
+                <i class="fas fa-project-diagram"></i>
+                Data Pipeline
+            </button>
         </div>
     </nav>
 
@@ -1787,6 +1791,770 @@
                                     <div class="progress-bar" style="width: 20%"></div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Intelligence Pipeline Tab -->
+            <div class="tab-content" id="pipeline-tab">
+                <div class="pipeline-header">
+                    <div class="pipeline-title-section">
+                        <h2><i class="fas fa-project-diagram"></i> Data Intelligence Pipeline</h2>
+                        <p class="pipeline-subtitle">End-to-end data architecture powering real-time healthcare network insights</p>
+                    </div>
+                    <div class="pipeline-controls">
+                        <button class="btn-pipeline-action" id="startFlowBtn">
+                            <i class="fas fa-play"></i> Start Flow Animation
+                        </button>
+                        <button class="btn-pipeline-action" id="resetFlowBtn">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                        <button class="btn-pipeline-action">
+                            <i class="fas fa-download"></i> Export Infographic
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pipeline Sub-Navigation -->
+                <div class="pipeline-subnav">
+                    <button class="pipeline-subnav-btn active" data-pipeline-view="flow">
+                        <i class="fas fa-stream"></i> Data Flow View
+                    </button>
+                    <button class="pipeline-subnav-btn" data-pipeline-view="analytics">
+                        <i class="fas fa-chart-bar"></i> Analytics Framework
+                    </button>
+                    <button class="pipeline-subnav-btn" data-pipeline-view="apis">
+                        <i class="fas fa-plug"></i> API Layer
+                    </button>
+                </div>
+
+                <!-- Data Flow View -->
+                <div class="pipeline-view active" id="flow-view">
+                    <div class="pipeline-stages-container">
+                        <!-- Stage 1: Data Sources -->
+                        <div class="pipeline-stage" data-stage="sources">
+                            <div class="stage-header">
+                                <div class="stage-number">01</div>
+                                <h3><i class="fas fa-database"></i> Data Sources</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="data-source-card" data-source="tic">
+                                    <div class="source-icon">
+                                        <i class="fas fa-file-medical"></i>
+                                    </div>
+                                    <div class="source-info">
+                                        <h4>Transparency in Coverage (TiC)</h4>
+                                        <p>Machine-readable files with negotiated rates</p>
+                                        <div class="source-metrics">
+                                            <span class="metric"><i class="fas fa-file"></i> 15,000+ files/mo</span>
+                                            <span class="metric"><i class="fas fa-database"></i> 2.3 TB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="data-source-card" data-source="mrf">
+                                    <div class="source-icon">
+                                        <i class="fas fa-hospital"></i>
+                                    </div>
+                                    <div class="source-info">
+                                        <h4>MRF (Machine-Readable Files)</h4>
+                                        <p>Payer-specific pricing transparency data</p>
+                                        <div class="source-metrics">
+                                            <span class="metric"><i class="fas fa-file"></i> 8,500+ files/mo</span>
+                                            <span class="metric"><i class="fas fa-database"></i> 1.8 TB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="data-source-card" data-source="claims">
+                                    <div class="source-icon">
+                                        <i class="fas fa-receipt"></i>
+                                    </div>
+                                    <div class="source-info">
+                                        <h4>Claims Data</h4>
+                                        <p>Member utilization & spend patterns</p>
+                                        <div class="source-metrics">
+                                            <span class="metric"><i class="fas fa-file"></i> 500K+ claims/day</span>
+                                            <span class="metric"><i class="fas fa-database"></i> 850 GB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="data-source-card" data-source="provider">
+                                    <div class="source-icon">
+                                        <i class="fas fa-user-md"></i>
+                                    </div>
+                                    <div class="source-info">
+                                        <h4>Provider Directories</h4>
+                                        <p>Network composition & credentialing data</p>
+                                        <div class="source-metrics">
+                                            <span class="metric"><i class="fas fa-users"></i> 125K providers</span>
+                                            <span class="metric"><i class="fas fa-database"></i> 320 GB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2: Data Ingestion -->
+                        <div class="pipeline-stage" data-stage="ingestion">
+                            <div class="stage-header">
+                                <div class="stage-number">02</div>
+                                <h3><i class="fas fa-download"></i> Data Ingestion</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Automated extraction and loading of data from multiple sources using scalable streaming and batch processes.</p>
+                                </div>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">Apache Kafka</span>
+                                    <span class="tech-badge">AWS S3</span>
+                                    <span class="tech-badge">Azure Blob</span>
+                                    <span class="tech-badge">Python ETL</span>
+                                </div>
+                                <div class="stage-metrics">
+                                    <div class="metric-item">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>15 TB/day throughput</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Real-time streaming</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 3: Parsing & Validation -->
+                        <div class="pipeline-stage" data-stage="parsing">
+                            <div class="stage-header">
+                                <div class="stage-number">03</div>
+                                <h3><i class="fas fa-code"></i> Parsing & Validation</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Schema validation, JSON/CSV parsing, and format standardization across heterogeneous data sources.</p>
+                                </div>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">JSON Schema</span>
+                                    <span class="tech-badge">Pandas</span>
+                                    <span class="tech-badge">Great Expectations</span>
+                                </div>
+                                <div class="validation-stats">
+                                    <div class="stat-card success">
+                                        <i class="fas fa-check-circle"></i>
+                                        <div>
+                                            <strong>98.7%</strong>
+                                            <span>Valid Records</span>
+                                        </div>
+                                    </div>
+                                    <div class="stat-card warning">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <div>
+                                            <strong>1.3%</strong>
+                                            <span>Flagged for Review</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 4: Data Cleaning -->
+                        <div class="pipeline-stage" data-stage="cleaning">
+                            <div class="stage-header">
+                                <div class="stage-number">04</div>
+                                <h3><i class="fas fa-broom"></i> Data Cleaning</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Deduplication, outlier detection, missing value imputation, and anomaly flagging for data quality.</p>
+                                </div>
+                                <div class="cleaning-operations">
+                                    <div class="operation-item">
+                                        <i class="fas fa-copy"></i>
+                                        <span>Deduplication</span>
+                                        <div class="operation-impact">-12% records</div>
+                                    </div>
+                                    <div class="operation-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>Outlier Detection</span>
+                                        <div class="operation-impact">2,450 flags/day</div>
+                                    </div>
+                                    <div class="operation-item">
+                                        <i class="fas fa-fill"></i>
+                                        <span>Value Imputation</span>
+                                        <div class="operation-impact">ML-based</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 5: Identity Graph -->
+                        <div class="pipeline-stage" data-stage="identity">
+                            <div class="stage-header">
+                                <div class="stage-number">05</div>
+                                <h3><i class="fas fa-project-diagram"></i> Identity Graph</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Entity resolution linking providers, facilities, and organizations across disparate data sources using fuzzy matching and ML.</p>
+                                </div>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">Neo4j</span>
+                                    <span class="tech-badge">Entity Resolution ML</span>
+                                    <span class="tech-badge">Graph Algorithms</span>
+                                </div>
+                                <div class="identity-metrics">
+                                    <div class="metric-card">
+                                        <i class="fas fa-link"></i>
+                                        <div>
+                                            <strong>385K</strong>
+                                            <span>Unique Entities</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-card">
+                                        <i class="fas fa-network-wired"></i>
+                                        <div>
+                                            <strong>2.1M</strong>
+                                            <span>Relationships Mapped</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 6: Normalization -->
+                        <div class="pipeline-stage" data-stage="normalization">
+                            <div class="stage-header">
+                                <div class="stage-number">06</div>
+                                <h3><i class="fas fa-balance-scale"></i> Normalization</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Risk adjustment, geographic indexing, and acuity weighting to enable fair benchmarking across markets.</p>
+                                </div>
+                                <div class="normalization-methods">
+                                    <div class="method-card">
+                                        <i class="fas fa-heartbeat"></i>
+                                        <h4>Risk Adjustment</h4>
+                                        <p>HCC & CMS-HCC models</p>
+                                    </div>
+                                    <div class="method-card">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <h4>Geo Indexing</h4>
+                                        <p>CBSA & ZIP-level</p>
+                                    </div>
+                                    <div class="method-card">
+                                        <i class="fas fa-weight"></i>
+                                        <h4>Acuity Weighting</h4>
+                                        <p>Volume-weighted avg</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 7: Data Integration -->
+                        <div class="pipeline-stage" data-stage="integration">
+                            <div class="stage-header">
+                                <div class="stage-number">07</div>
+                                <h3><i class="fas fa-puzzle-piece"></i> Data Integration</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Cross-source joins, dimensional modeling, and unified data warehouse creation for comprehensive analytics.</p>
+                                </div>
+                                <div class="tech-stack">
+                                    <span class="tech-badge">Snowflake</span>
+                                    <span class="tech-badge">dbt</span>
+                                    <span class="tech-badge">Apache Spark</span>
+                                </div>
+                                <div class="integration-diagram">
+                                    <div class="integration-node">TiC Data</div>
+                                    <div class="integration-connector">+</div>
+                                    <div class="integration-node">Claims Data</div>
+                                    <div class="integration-connector">+</div>
+                                    <div class="integration-node">Provider Data</div>
+                                    <div class="integration-connector">=</div>
+                                    <div class="integration-result">Unified Mart</div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 8: Analytics & Modeling -->
+                        <div class="pipeline-stage" data-stage="modeling">
+                            <div class="stage-header">
+                                <div class="stage-number">08</div>
+                                <h3><i class="fas fa-brain"></i> Analytics & Modeling</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Statistical analysis, predictive models, benchmarking algorithms, and business intelligence calculations.</p>
+                                </div>
+                                <div class="models-grid">
+                                    <div class="model-card">
+                                        <i class="fas fa-chart-area"></i>
+                                        <h4>Benchmarking Engine</h4>
+                                        <span class="model-status active">Active</span>
+                                    </div>
+                                    <div class="model-card">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                        <h4>Outlier Detection</h4>
+                                        <span class="model-status active">Active</span>
+                                    </div>
+                                    <div class="model-card">
+                                        <i class="fas fa-chart-line"></i>
+                                        <h4>Trend Forecasting</h4>
+                                        <span class="model-status active">Active</span>
+                                    </div>
+                                    <div class="model-card">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <h4>Savings Calculator</h4>
+                                        <span class="model-status active">Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 9: Curated Data Store -->
+                        <div class="pipeline-stage" data-stage="curated">
+                            <div class="stage-header">
+                                <div class="stage-number">09</div>
+                                <h3><i class="fas fa-warehouse"></i> Curated Data Store</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Production-ready analytical datasets optimized for query performance and dashboard consumption.</p>
+                                </div>
+                                <div class="curated-layers">
+                                    <div class="layer-item">
+                                        <i class="fas fa-layer-group"></i>
+                                        <div>
+                                            <strong>Gold Layer</strong>
+                                            <span>Business-ready aggregates</span>
+                                        </div>
+                                    </div>
+                                    <div class="layer-item">
+                                        <i class="fas fa-table"></i>
+                                        <div>
+                                            <strong>Semantic Layer</strong>
+                                            <span>Business definitions & metrics</span>
+                                        </div>
+                                    </div>
+                                    <div class="layer-item">
+                                        <i class="fas fa-bolt"></i>
+                                        <div>
+                                            <strong>Query Cache</strong>
+                                            <span>&lt;200ms avg response</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 10: API Layer -->
+                        <div class="pipeline-stage" data-stage="api">
+                            <div class="stage-header">
+                                <div class="stage-number">10</div>
+                                <h3><i class="fas fa-plug"></i> API Layer</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>RESTful and GraphQL APIs providing secure, authenticated access to curated insights for dashboards and integrations.</p>
+                                </div>
+                                <div class="api-endpoints">
+                                    <div class="endpoint-card">
+                                        <span class="http-method get">GET</span>
+                                        <code>/api/v1/benchmarks</code>
+                                    </div>
+                                    <div class="endpoint-card">
+                                        <span class="http-method get">GET</span>
+                                        <code>/api/v1/outliers</code>
+                                    </div>
+                                    <div class="endpoint-card">
+                                        <span class="http-method post">POST</span>
+                                        <code>/api/v1/scenarios</code>
+                                    </div>
+                                    <div class="endpoint-card">
+                                        <span class="http-method get">GET</span>
+                                        <code>/api/v1/providers</code>
+                                    </div>
+                                </div>
+                                <div class="api-metrics">
+                                    <span class="api-stat"><i class="fas fa-check"></i> 99.98% uptime</span>
+                                    <span class="api-stat"><i class="fas fa-tachometer-alt"></i> 180ms avg latency</span>
+                                    <span class="api-stat"><i class="fas fa-shield-alt"></i> OAuth 2.0 secured</span>
+                                </div>
+                            </div>
+                            <div class="stage-flow-connector">
+                                <div class="flow-arrow"></div>
+                            </div>
+                        </div>
+
+                        <!-- Stage 11: Dashboard Layer -->
+                        <div class="pipeline-stage" data-stage="dashboards">
+                            <div class="stage-header">
+                                <div class="stage-number">11</div>
+                                <h3><i class="fas fa-chart-pie"></i> Dashboard Layer</h3>
+                            </div>
+                            <div class="stage-body">
+                                <div class="stage-description">
+                                    <p>Role-based dashboards delivering actionable insights to executives, managers, and contracting teams.</p>
+                                </div>
+                                <div class="dashboard-outputs">
+                                    <div class="output-card executive-card" onclick="switchToTab('executive')">
+                                        <i class="fas fa-chart-line"></i>
+                                        <h4>Executive View</h4>
+                                        <p>Strategic KPIs & board insights</p>
+                                        <span class="goto-link">View Dashboard →</span>
+                                    </div>
+                                    <div class="output-card manager-card" onclick="switchToTab('manager')">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        <h4>Manager View</h4>
+                                        <p>Regional performance & gaps</p>
+                                        <span class="goto-link">View Dashboard →</span>
+                                    </div>
+                                    <div class="output-card contracting-card" onclick="switchToTab('contracting')">
+                                        <i class="fas fa-handshake"></i>
+                                        <h4>Contracting View</h4>
+                                        <p>Rate analysis & negotiations</p>
+                                        <span class="goto-link">View Dashboard →</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Data Journey Visualization -->
+                    <div class="data-journey-visualization" id="dataJourneyViz">
+                        <div class="journey-particle" id="journeyParticle"></div>
+                    </div>
+                </div>
+
+                <!-- Analytics Framework View -->
+                <div class="pipeline-view" id="analytics-view">
+                    <div class="analytics-framework">
+                        <h3>Analytics Framework Architecture</h3>
+                        <div class="framework-grid">
+                            <div class="framework-card">
+                                <div class="framework-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h4>Descriptive Analytics</h4>
+                                <p>What happened? Current state metrics and historical trends</p>
+                                <ul class="framework-features">
+                                    <li>Market rate benchmarking</li>
+                                    <li>Network adequacy scoring</li>
+                                    <li>Provider performance metrics</li>
+                                    <li>Utilization patterns</li>
+                                </ul>
+                            </div>
+                            <div class="framework-card">
+                                <div class="framework-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <h4>Diagnostic Analytics</h4>
+                                <p>Why did it happen? Root cause analysis and variance decomposition</p>
+                                <ul class="framework-features">
+                                    <li>Outlier identification</li>
+                                    <li>Rate variance drivers</li>
+                                    <li>Coverage gap analysis</li>
+                                    <li>Cost trend attribution</li>
+                                </ul>
+                            </div>
+                            <div class="framework-card">
+                                <div class="framework-icon">
+                                    <i class="fas fa-crystal-ball"></i>
+                                </div>
+                                <h4>Predictive Analytics</h4>
+                                <p>What will happen? Forecasting and trend projection</p>
+                                <ul class="framework-features">
+                                    <li>Rate trajectory modeling</li>
+                                    <li>Volume forecasting</li>
+                                    <li>Negotiation outcome prediction</li>
+                                    <li>Risk scoring</li>
+                                </ul>
+                            </div>
+                            <div class="framework-card">
+                                <div class="framework-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4>Prescriptive Analytics</h4>
+                                <p>What should we do? Actionable recommendations and optimization</p>
+                                <ul class="framework-features">
+                                    <li>Optimal contracting strategies</li>
+                                    <li>Network configuration recommendations</li>
+                                    <li>Savings opportunity prioritization</li>
+                                    <li>What-if scenario modeling</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="ml-models-section">
+                            <h3>Machine Learning Models in Production</h3>
+                            <div class="ml-models-grid">
+                                <div class="ml-model-card">
+                                    <div class="model-header">
+                                        <h4>Rate Outlier Detection</h4>
+                                        <span class="model-badge ml">ML</span>
+                                    </div>
+                                    <div class="model-details">
+                                        <p><strong>Algorithm:</strong> Isolation Forest + DBSCAN</p>
+                                        <p><strong>Accuracy:</strong> 94.2%</p>
+                                        <p><strong>Training Frequency:</strong> Weekly</p>
+                                    </div>
+                                    <div class="model-performance">
+                                        <div class="performance-bar">
+                                            <div class="performance-fill" style="width: 94.2%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-model-card">
+                                    <div class="model-header">
+                                        <h4>Provider Match & Entity Resolution</h4>
+                                        <span class="model-badge ml">ML</span>
+                                    </div>
+                                    <div class="model-details">
+                                        <p><strong>Algorithm:</strong> Fuzzy Matching + Neural Network</p>
+                                        <p><strong>Accuracy:</strong> 97.8%</p>
+                                        <p><strong>Training Frequency:</strong> Daily</p>
+                                    </div>
+                                    <div class="model-performance">
+                                        <div class="performance-bar">
+                                            <div class="performance-fill" style="width: 97.8%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ml-model-card">
+                                    <div class="model-header">
+                                        <h4>Savings Opportunity Scoring</h4>
+                                        <span class="model-badge ml">ML</span>
+                                    </div>
+                                    <div class="model-details">
+                                        <p><strong>Algorithm:</strong> Gradient Boosting (XGBoost)</p>
+                                        <p><strong>Accuracy:</strong> 91.5%</p>
+                                        <p><strong>Training Frequency:</strong> Bi-weekly</p>
+                                    </div>
+                                    <div class="model-performance">
+                                        <div class="performance-bar">
+                                            <div class="performance-fill" style="width: 91.5%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Layer View -->
+                <div class="pipeline-view" id="apis-view">
+                    <div class="api-documentation">
+                        <h3>API Documentation & Endpoints</h3>
+                        
+                        <div class="api-overview">
+                            <div class="api-stat-card">
+                                <i class="fas fa-plug"></i>
+                                <div>
+                                    <strong>24</strong>
+                                    <span>API Endpoints</span>
+                                </div>
+                            </div>
+                            <div class="api-stat-card">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>180ms</strong>
+                                    <span>Avg Response Time</span>
+                                </div>
+                            </div>
+                            <div class="api-stat-card">
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>99.98%</strong>
+                                    <span>Uptime SLA</span>
+                                </div>
+                            </div>
+                            <div class="api-stat-card">
+                                <i class="fas fa-exchange-alt"></i>
+                                <div>
+                                    <strong>2.4M</strong>
+                                    <span>Requests/day</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-categories">
+                            <div class="api-category">
+                                <h4><i class="fas fa-chart-line"></i> Benchmarking APIs</h4>
+                                <div class="api-endpoint-list">
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/benchmarks/market-rates</code>
+                                            <p>Retrieve market-wide rate benchmarks by geography and specialty</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/benchmarks/provider/{npi}</code>
+                                            <p>Get provider-specific benchmarking vs market percentiles</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method post">POST</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/benchmarks/custom</code>
+                                            <p>Calculate custom benchmarks with filters and parameters</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="api-category">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Outlier Detection APIs</h4>
+                                <div class="api-endpoint-list">
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/outliers/providers</code>
+                                            <p>List all providers flagged as high-cost outliers</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/outliers/procedures</code>
+                                            <p>Identify specific CPT codes with rate variances</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="api-category">
+                                <h4><i class="fas fa-map-marked-alt"></i> Network Adequacy APIs</h4>
+                                <div class="api-endpoint-list">
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/network/adequacy-score</code>
+                                            <p>Calculate network adequacy scores by region and specialty</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method get">GET</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/network/coverage-gaps</code>
+                                            <p>Identify geographic or specialty coverage gaps</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="api-category">
+                                <h4><i class="fas fa-calculator"></i> Scenario Modeling APIs</h4>
+                                <div class="api-endpoint-list">
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method post">POST</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/scenarios/calculate-savings</code>
+                                            <p>Run what-if scenarios for rate reduction impact</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                    <div class="api-endpoint-item">
+                                        <div class="endpoint-method post">POST</div>
+                                        <div class="endpoint-details">
+                                            <code>/api/v1/scenarios/forecast</code>
+                                            <p>Generate forecasts based on historical trends</p>
+                                        </div>
+                                        <button class="btn-try-api">Try it</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-authentication">
+                            <h4><i class="fas fa-lock"></i> Authentication & Security</h4>
+                            <div class="auth-details">
+                                <div class="auth-method">
+                                    <h5>OAuth 2.0</h5>
+                                    <p>Industry-standard authorization framework with token-based authentication</p>
+                                    <code>Authorization: Bearer {access_token}</code>
+                                </div>
+                                <div class="auth-method">
+                                    <h5>Rate Limiting</h5>
+                                    <p>100 requests per minute per API key with burst allowance</p>
+                                    <code>X-RateLimit-Remaining: 95</code>
+                                </div>
+                                <div class="auth-method">
+                                    <h5>Encryption</h5>
+                                    <p>TLS 1.3 encryption for all API traffic with certificate pinning</p>
+                                    <code>HTTPS only - no HTTP fallback</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pipeline Metrics Footer -->
+                <div class="pipeline-metrics-footer">
+                    <div class="pipeline-metric">
+                        <i class="fas fa-database"></i>
+                        <div>
+                            <strong>5.2 TB</strong>
+                            <span>Daily Data Processed</span>
+                        </div>
+                    </div>
+                    <div class="pipeline-metric">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>15 min</strong>
+                            <span>End-to-End Latency</span>
+                        </div>
+                    </div>
+                    <div class="pipeline-metric">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>99.2%</strong>
+                            <span>Data Quality Score</span>
+                        </div>
+                    </div>
+                    <div class="pipeline-metric">
+                        <i class="fas fa-sync"></i>
+                        <div>
+                            <strong>24/7</strong>
+                            <span>Automated Processing</span>
                         </div>
                     </div>
                 </div>
